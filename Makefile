@@ -15,28 +15,32 @@
 CC =		clang
 FLAGS =		-Wall -Werror -Wextra -O2
 NAME =		fdf
-INCLS =		-I./includes
+INCLS =		-I./includes -I./libft/includes
+LIBFT = 	-L./libft -lft
 SRCS_DIR =	srcs
 OBJS_DIR =	objs
 
-LIST =	
-		
+LIBS =	libft/libft.a
+
+LIST =	main \
+		parse/get_line \
+		misc/print_test \
+		error/error 
+
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
 OBJS := $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(LIST)))
 
 all: $(NAME)
 
-$(LIB):
-	make -C libft/fclean
+libft/libft.a:
 	make -C libft
 
-$(NAME): $(LIB) $(OBJS)
-	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIB)
-	ranlib $@
+$(NAME): $(LIBS) $(OBJS)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(FLAGS) $(INLCS) -o $@ -c $<
+	@$(CC) $(FLAGS) $(INCLS) -o $@ -c $<
 
 clean:
 	/bin/rm -rf $(OBJS_DIR)
