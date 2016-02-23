@@ -30,6 +30,7 @@ LIST =	main \
 		mlx/mlx_init \
 		mlx/new_image \
 		mlx/key_mlx \
+		mlx/key_tab \
 		error/error 
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))

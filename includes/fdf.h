@@ -66,8 +66,8 @@ int					ft_mlx_image_init(void *mlx_ptr, t_image *image,
 					int width, int height);
 
 int					key_value(int keycode, void *params);
-int					key_esc(int keycode, void *params)
-
+int					key_esc(int keycode, void *params);
+int					key_call(void *win_ptr, void *params);
 void				error_args(void);
 
 #endif
