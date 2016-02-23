@@ -19,8 +19,8 @@ void				mlx_start(t_data *data)
 
 	(void)data;
 	mlx.mlx_ptr = mlx_init();
-	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, 400, 400, "fdf");
-
-
+	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, WIDTH, HEIGHT, "fdf");
+	ft_mlx_image_init(mlx.mlx_ptr, &mlx.screen, WIDTH, HEIGHT);
+	mlx_key_hook(mlx.win_ptr, key_value, 0);
 	mlx_loop(mlx.mlx_ptr);
 }

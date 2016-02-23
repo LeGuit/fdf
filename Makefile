@@ -28,6 +28,8 @@ LIST =	main \
 		parse/get_line \
 		misc/print_test \
 		mlx/mlx_init \
+		mlx/new_image \
+		mlx/key_mlx \
 		error/error 
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
