@@ -13,7 +13,7 @@
 #ifndef _FDF_H
 # define _FDF_H
 
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # define C_VEC4(ptr)		((t_vec4 const *)ptr)
 
 typedef struct		s_data

@@ -29,7 +29,6 @@ static void		get_nbrs(char *line, t_data *data)
 		vertex.pos.y = (float)data->nrow;
 		vertex.pos.z = (float)(ft_atoi(tmp_line));
 		vertex.pos.w = (float)1;
-		print_vertex(&vertex);
 		ft_vect_push_back(&data->vertices, &vertex);
 		while (ft_isdigit(*tmp_line) || *tmp_line == '-')
 			tmp_line++;

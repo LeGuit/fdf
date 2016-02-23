@@ -15,16 +15,19 @@
 CC =		clang
 FLAGS =		-Wall -Werror -Wextra -O2
 NAME =		fdf
-INCLS =		-I./includes -I./libft/includes
-LIBFT = 	-L./libft -lft
+INCLS =		-I./includes -I./libft/includes 
+LIBFT = 	-L./libft -lft \
+			-L./libmlx -lmlx -framework OpenGL -framework AppKit
 SRCS_DIR =	srcs
 OBJS_DIR =	objs
 
-LIBS =	libft/libft.a
+LIBS =	libft/libft.a \
+		libmlx/libmlx.a
 
 LIST =	main \
 		parse/get_line \
 		misc/print_test \
+		mlx/mlx_init \
 		error/error 
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
@@ -34,6 +37,9 @@ all: $(NAME)
 
 libft/libft.a:
 	make -C libft
+
+libmlx/libmlx.a:
+	make -C libmlx
 
 $(NAME): $(LIBS) $(OBJS)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT)
