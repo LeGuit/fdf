@@ -17,18 +17,13 @@ int					key_value(int keycode, void *params)
 {
 	(void)params;
 	ft_printf("key code: %d\n", keycode);
-	return (0);
+	return (keycode);
 }
 
 int					key_esc(int keycode, void *params)
 {
 	(void)params;
-	if (keycode == 53)
-	{
-		ft_printf("ESC pressed:\n EXIT SUCCESS");
-		exit(0);
-	}
-	else
-		return (0);
-	
+	(void)keycode;
+	ft_printf("ESC pressed:\n EXIT SUCCESS");
+	exit(0);
 }

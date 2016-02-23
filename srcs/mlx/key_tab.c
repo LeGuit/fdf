@@ -15,8 +15,11 @@
 
 int					key_call(void *win_ptr, void *params)
 {
-	mlx_key_hook(win_ptr, key_value, params);
-	mlx_key_hook(win_ptr, key_esc, params);
+	int				keycode;
+
+	keycode = mlx_key_hook(win_ptr, key_value, params);
+	if (keycode == 53)
+		mlx_key_hook(win_ptr, key_esc, params);
 	return (0);
 }
 
