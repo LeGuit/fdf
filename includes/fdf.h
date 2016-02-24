@@ -35,6 +35,7 @@
 typedef struct		s_data
 {
 	t_vect			vertices;
+	t_vect			vert2d;
 	int				nrow;
 	int				ncol;
 }					t_data;
@@ -64,7 +65,23 @@ typedef struct		s_vec3i
 
 typedef struct		s_matrix
 {
-	/* data */
+	float			a1;
+	float			a2;
+	float			a3;
+	float			a4;
+	float			b1;
+	float			b2;
+	float			b3;
+	float			b4;
+	float			c1;
+	float			c2;
+	float			c3;
+	float			c4;
+	float			d1;
+	float			d2;
+	float			d3;
+	float			d4;
+
 }					t_matrix;
 
 typedef struct		s_vec4f
@@ -86,6 +103,7 @@ void				error_map(void);
 
 void				print_vertex(t_vertex const *vec);
 void				print_vec4f(t_vec4f const *vec);
+void				print_vec3i(t_vec3i const *vec);
 
 void				get_file(char *av, t_data *data);
 void				mlx_start(t_data *data);
@@ -97,5 +115,6 @@ int					key_esc(int keycode, void *params);
 int					key_call(int keycode, void *params);
 void				error_args(void);
 
-void				try_draw(t_image *image, t_vect *vertices, t_data *data);
+void				projection(t_vect *vertices, t_vect *vert2d);
+void				try_draw(t_image *image, t_vect *vert2d);
 #endif

@@ -18,6 +18,7 @@ static void		init_data(t_data *data)
 	data->nrow = -1;
 	data->ncol = 0;
 	data->vertices = VECT_INI(t_vertex);
+	data->vert2d = VECT_INI(t_vertex);
 }
 
 int				main(int ac, char **av)

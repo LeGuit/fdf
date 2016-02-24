@@ -22,3 +22,8 @@ void			print_vec4f(t_vec4f const *vec)
 {
 	printf("%f %f %f %f\n", (vec->x), (vec->y), (vec->z), vec->w);
 }
+
+void			print_vec3i(t_vec3i const *vec)
+{
+	printf("%i %i %i\n", (vec->x), (vec->y), (vec->z));
+}
