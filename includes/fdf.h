@@ -18,6 +18,18 @@
 # define WIDTH				600
 # define HEIGHT				400
 
+# define ESC				53
+# define LARROW				123
+# define RARROW				124
+# define DARROW				125
+# define UARROW				126
+# define D_KEY				2
+# define A_KEY				0
+# define W_KEY				13
+# define S_KEY				1
+# define PLUS				69
+# define MINUS				78
+
 typedef struct		s_data
 {
 	t_vect			vertices;
@@ -71,4 +83,5 @@ int					key_esc(int keycode, void *params);
 int					key_call(int keycode, void *params);
 void				error_args(void);
 
+void				try_draw(void *mlx_ptr, t_image *image, t_vect *vertices, t_data *data);
 #endif

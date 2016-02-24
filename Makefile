@@ -31,7 +31,8 @@ LIST =	main \
 		mlx/new_image \
 		mlx/key_mlx \
 		mlx/key_call \
-		error/error 
+		error/error \
+		draw/drawing
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
 OBJS := $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(LIST)))

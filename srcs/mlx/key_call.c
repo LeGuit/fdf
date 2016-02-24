@@ -15,27 +15,27 @@
 
 int					key_call(int keycode, void *params)
 {
-	if (keycode == 53)
+	if (keycode == ESC)
 		key_esc(keycode, params);
-	// else if (keycode == 123)
+	// else if (keycode == LARROW)
 	// 	key_trans_left();
-	// else if (keycode == 124)
+	// else if (keycode == RARROW)
 	// 	key_trans_right();
-	// else if (keycode == 125)
+	// else if (keycode == DARROW)
 	// 	key_trans_down();
-	// else if (keycode == 126)
+	// else if (keycode == UARROW)
 	// 	key_trans_up();
-	// else if (keycode == 2)
+	// else if (keycode == D_KEY)
 	// 	key_rot_right();
-	// else if (keycode == 0)
+	// else if (keycode == A_KEY)
 	// 	key_rot_left();
-	// else if (keycode == 13)
+	// else if (keycode == W_KEY)
 	// 	key_rot_up();
-	// else if (keycode == 1)
+	// else if (keycode == S_KEY)
 	// 	key_rot_down();
-	// else if (keycode == 69)
+	// else if (keycode == PLUS)
 	// 	key_zoom_im();
-	// else if (keycode == 78)
+	// else if (keycode == MINUS)
 	// 	key_zoom_out();
 	else
 		key_value(keycode, params);
