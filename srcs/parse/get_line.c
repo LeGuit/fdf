@@ -15,7 +15,7 @@
 
 static void		get_nbrs(char *line, t_data *data)
 {
-	size_t		i;
+	int			i;
 	t_vertex	vertex;
 	char		*tmp_line;
 
@@ -34,6 +34,7 @@ static void		get_nbrs(char *line, t_data *data)
 			tmp_line++;
 		i++;
 	}
+	free(line);
 }
 
 static int		check_line(char *line, t_data *data)
@@ -41,7 +42,7 @@ static int		check_line(char *line, t_data *data)
 	int			i;
 
 	i = 0;
-	if ((ft_nb_words(line, ' ') != data->ncol))
+	if (((int)ft_nb_words(line, ' ') != data->ncol))
 		return (2);
 	while (line[i])
 	{
@@ -64,12 +65,12 @@ void			get_file(char *av, t_data *data)
 		error_open();
 	while ((ret = get_next_line(fd, &line) > 0))
 	{
+		data->nrow++;
 		if (data->nrow == 0)
 			data->ncol = ft_nb_words(line, ' ');
 		if ((ret = check_line(line, data)))
 			error_file(ret);
 		get_nbrs(line, data);
-		data->nrow++;
 	}
 	close(fd);
 	ft_vect_print(&data->vertices, &print_vertex);

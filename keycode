@@ -1,4 +1,15 @@
 ESC		>> 53
+
+For trans
 LARROW	>> 123
 RARROW	>> 124
+DownArr	>> 125
+UpArrow >> 126
+
+For rot
+D		>> 2
+S		>> 1
+W		>> 13
+A		>> 0
+
 C		>> 8 -> enable colors

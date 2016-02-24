@@ -31,3 +31,9 @@ void				error_file(int error)
 		ft_putendl_fd("fdf: wrong char in the file!", 2);
 	exit(0);
 }
+
+void				error_map(void)
+{
+	ft_putendl_fd("fdf: map error!", 2);
+	exit(0);
+}

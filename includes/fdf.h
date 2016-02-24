@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 16:36:36 by gwoodwar          #+#    #+#             */
-/*   Updated: 2016/02/23 16:38:16 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2016/02/24 10:44:39 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 typedef struct		s_data
 {
 	t_vect			vertices;
-	size_t			nrow;
-	size_t			ncol;
+	int				nrow;
+	int				ncol;
 }					t_data;
 
 typedef struct		s_image
@@ -56,6 +56,7 @@ typedef struct		s_vertex
 
 void				error_open(void);
 void				error_file(int error);
+void				error_map(void);
 
 void				print_vertex(t_vertex const *vec);
 void				print_vec4(t_vec4 const *vec);
@@ -67,7 +68,7 @@ int					ft_mlx_image_init(void *mlx_ptr, t_image *image,
 
 int					key_value(int keycode, void *params);
 int					key_esc(int keycode, void *params);
-int					key_call(void *win_ptr, void *params);
+int					key_call(int keycode, void *params);
 void				error_args(void);
 
 #endif
