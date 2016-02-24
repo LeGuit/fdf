@@ -73,5 +73,5 @@ void			get_file(char *av, t_data *data)
 		get_nbrs(line, data);
 	}
 	close(fd);
-	ft_vect_print(&data->vertices, &print_vertex);
+	// ft_vect_print(&data->vertices, &print_vertex);
 }

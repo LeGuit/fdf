@@ -13,21 +13,24 @@
 #include "fdf.h"
 #include "mlx.h"
 
-void				try_draw(void *mlx_ptr, t_image *image, t_vect *vertices, t_data *data)
+#define PIXEL_OFFSET(x, y, w)	((int)((y) * (w) + (x)))
+#define CAST(type, ptr)			((type)(ptr))
+
+void				try_draw(t_image *image, t_vect *vertices, t_data *data)
 {
+	t_vertex		*v;
 	size_t i = 0;
-	size_t j = 0;
-	(void)mlx_ptr;
-	int color1 = mlx_get_color_value(mlx_ptr, 0x00ff7f50);
-	int color2 = mlx_get_color_value(mlx_ptr, 0x00ffffff);
-	ft_printf("col1: %d\tcol2: %d\n", color1, color2);
-	while (j < vertices->size)
+
+	(void)data;
+	int color = 0;
+	ft_printf("col1: %d\n", color);
+	while (i < vertices->size)
 	{
-		image->data[j + i] = color1;
-		image->data[j + i] = color1;
-		image->data[j + i] = color1;
-		j++;
-		if (j % data->nrow == 0)
-			i += (image->size_line - j);
+		v = ft_vect_at(vertices, i);
+		color = (v->pos.z > 0) ? 0xFF0000 : 0x0000FF;
+		ft_printf("PIXEL_OFFSET: %d\n", (int)PIXEL_OFFSET(v->pos.x, v->pos.y, I_WIDTH));
+		print_vertex(v);
+		CAST(int*, image->data)[PIXEL_OFFSET(v->pos.x, v->pos.y, I_WIDTH)] = color;
+		i++;
 	}
 }

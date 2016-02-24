@@ -15,8 +15,10 @@
 
 # include "libft.h"
 # define C_VEC4(ptr)		((t_vec4 const *)ptr)
-# define WIDTH				600
-# define HEIGHT				400
+# define W_WIDTH				600
+# define W_HEIGHT				400
+# define I_WIDTH				300
+# define I_HEIGHT				200
 
 # define ESC				53
 # define LARROW				123
@@ -53,17 +55,29 @@ typedef struct		s_mlx
 	t_image			screen;
 }					t_mlx;
 
-typedef struct		s_vec4
+typedef struct		s_vec3i
+{
+	int				x;
+	int				y;
+	int				z;
+}					t_vec3i;
+
+typedef struct		s_matrix
+{
+	/* data */
+}					t_matrix;
+
+typedef struct		s_vec4f
 {
 	float			x;
 	float			y;
 	float			z;
 	float			w;
-}					t_vec4;
+}					t_vec4f;
 
 typedef struct		s_vertex
 {
-	t_vec4			pos;
+	t_vec4f			pos;
 }					t_vertex;
 
 void				error_open(void);
@@ -71,7 +85,7 @@ void				error_file(int error);
 void				error_map(void);
 
 void				print_vertex(t_vertex const *vec);
-void				print_vec4(t_vec4 const *vec);
+void				print_vec4f(t_vec4f const *vec);
 
 void				get_file(char *av, t_data *data);
 void				mlx_start(t_data *data);
@@ -83,5 +97,5 @@ int					key_esc(int keycode, void *params);
 int					key_call(int keycode, void *params);
 void				error_args(void);
 
-void				try_draw(void *mlx_ptr, t_image *image, t_vect *vertices, t_data *data);
+void				try_draw(t_image *image, t_vect *vertices, t_data *data);
 #endif

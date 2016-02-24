@@ -15,10 +15,10 @@
 
 void			print_vertex(t_vertex const *vertex)
 {
-	print_vec4(&vertex->pos);
+	print_vec4f(&vertex->pos);
 }
 
-void			print_vec4(t_vec4 const *vec)
+void			print_vec4f(t_vec4f const *vec)
 {
 	printf("%f %f %f %f\n", (vec->x), (vec->y), (vec->z), vec->w);
 }
