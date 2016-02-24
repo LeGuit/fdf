@@ -17,8 +17,8 @@
 # define C_VEC4(ptr)		((t_vec4 const *)ptr)
 # define W_WIDTH				600
 # define W_HEIGHT				400
-# define I_WIDTH				300
-# define I_HEIGHT				200
+# define I_WIDTH				600
+# define I_HEIGHT				400
 
 # define ESC				53
 # define LARROW				123
@@ -49,6 +49,11 @@ typedef struct		s_image
 	char			*data;
 }					t_image;
 
+typedef struct		s_map
+{
+	
+}					t_map;
+
 typedef struct		s_mlx
 {
 	void			*mlx_ptr;
@@ -65,23 +70,7 @@ typedef struct		s_vec3i
 
 typedef struct		s_matrix
 {
-	float			a1;
-	float			a2;
-	float			a3;
-	float			a4;
-	float			b1;
-	float			b2;
-	float			b3;
-	float			b4;
-	float			c1;
-	float			c2;
-	float			c3;
-	float			c4;
-	float			d1;
-	float			d2;
-	float			d3;
-	float			d4;
-
+	float			m[16];
 }					t_matrix;
 
 typedef struct		s_vec4f
