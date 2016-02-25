@@ -32,7 +32,9 @@ LIST =	main \
 		mlx/key_mlx \
 		mlx/key_call \
 		error/error \
-		draw/drawing
+		draw/drawing \
+		calcul/projection \
+		calcul/transformation
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
 OBJS := $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(LIST)))

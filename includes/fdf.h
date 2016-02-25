@@ -47,12 +47,14 @@ typedef struct		s_image
 	int				size_line;
 	int				endian;
 	char			*data;
+	t_viewport		view;
 }					t_image;
 
-typedef struct		s_map
+typedef struct		s_viewport
 {
-	
-}					t_map;
+	int				xmax;
+	int				ymax;
+}					t_viewport;
 
 typedef struct		s_mlx
 {
@@ -105,5 +107,7 @@ int					key_call(int keycode, void *params);
 void				error_args(void);
 
 void				projection(t_vect *vertices, t_vect *vert2d);
-void				try_draw(t_image *image, t_vect *vert2d);
+void				draw(t_image *image, t_vect *vert2d);
+void				put_pix_to_img(t_vec3i *v, t_image *i);
+
 #endif
