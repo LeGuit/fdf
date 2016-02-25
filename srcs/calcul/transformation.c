@@ -2,38 +2,38 @@
 #include "fdf.h"
 #include <math.h>
 
-void				rot_x(t_matrix *mat)
+void				rot_x(t_matrix *mat, int theta)
 {
 	mat->m[0] = 1;
-	mat->m[5] = cos(THETA);
-	mat->m[6] = -sin(THETA);
-	mat->m[9] = sin(THETA);
-	mat->m[10] = cos(THETA);
+	mat->m[5] = cos(theta);
+	mat->m[6] = -sin(theta);
+	mat->m[9] = sin(theta);
+	mat->m[10] = cos(theta);
 	mat->m[15] = 1;
 }
 
-void				rot_y(t_matrix *mat)
+void				rot_y(t_matrix *mat, int theta)
 {
 	mat->m[5] = 1;
-	mat->m[0] = cos(THETA);
-	mat->m[8] = -sin(THETA);
-	mat->m[2] = sin(THETA);
-	mat->m[10] = cos(THETA);
+	mat->m[0] = cos(theta);
+	mat->m[8] = -sin(theta);
+	mat->m[2] = sin(theta);
+	mat->m[10] = cos(theta);
 	mat->m[15] = 1;
 }
 
-void				rot_z(t_matrix *mat)
+void				trans_v(t_matrix *mat, int keycode)
 {
-	mat->m[10] = 1;
-	mat->m[0] = cos(THETA);
-	mat->m[1] = -sin(THETA);
-	mat->m[4] = sin(THETA);
-	mat->m[5] = cos(THETA);
-	mat->m[15] = 1;
-}
+	t_vertex		v;
 
-void				trans_v(t_matrix *mat, t_vertex *v)
-{
+	if (keycode == LARROW)
+		v = {-1, 0, 0, 1};
+	else if (keycode == RARROW)
+		v = {1, 0, 0, 1};
+	else if (keycode == UARROW)
+		v = {0, 1, 0, 1};
+	else if (keycode == DARROW)
+		v = {0, -1, 0, 1};
 	mat->m[0] = 1;
 	mat->m[5] = 1
 	mat->m[10] = 1
