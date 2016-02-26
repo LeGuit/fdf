@@ -25,7 +25,8 @@ void				put_pix_to_img(t_vec3i *v, t_image *i)
 	off_x = (v->x + (W_WIDTH) / 2);
 	off_y = ((W_HEIGHT) / 2 - v->y) * W_WIDTH;
 	ft_printf("x: %d\ty: %d\n", off_x, off_y);
-	if (v->x < -(i->view.xmax) || v->y > -(i->view.ymax) || v->x > i->view.xmax || v->y < i->view.ymax)
+	if (v->x < -(i->view.xmax) || v->y > -(i->view.ymax)
+		|| v->x > i->view.xmax || v->y < i->view.ymax)
 		return ;
 	CAST(int *, i->data)[(off_x + off_y)] = v->z;
 }
