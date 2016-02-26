@@ -40,6 +40,12 @@ typedef struct		s_data
 	int				ncol;
 }					t_data;
 
+typedef struct		s_viewport
+{
+	int				xmax;
+	int				ymax;
+}					t_viewport;
+
 typedef struct		s_image
 {
 	void			*ptr;
@@ -49,12 +55,6 @@ typedef struct		s_image
 	char			*data;
 	t_viewport		view;
 }					t_image;
-
-typedef struct		s_viewport
-{
-	int				xmax;
-	int				ymax;
-}					t_viewport;
 
 typedef struct		s_mlx
 {
@@ -106,7 +106,9 @@ int					key_esc(int keycode, void *params);
 int					key_call(int keycode, void *params);
 void				error_args(void);
 
-void				projection(t_vect *vertices, t_vect *vert2d);
+void				matrix_calcul(t_vertex *v, t_matrix *mat);
+
+void				projection(t_vect *vertices, t_vect *vert2d, t_viewport *view);
 void				draw(t_image *image, t_vect *vert2d);
 void				put_pix_to_img(t_vec3i *v, t_image *i);
 

@@ -24,21 +24,21 @@ void				rot_y(t_matrix *mat, int theta)
 
 void				trans_v(t_matrix *mat, int keycode)
 {
-	t_vertex		v;
+	t_vec4f			v;
 
 	if (keycode == LARROW)
-		v = {-1, 0, 0, 1};
+		v = (t_vec4f){-1.f, 0.f, 0.f, 1.f};
 	else if (keycode == RARROW)
-		v = {1, 0, 0, 1};
+		v = (t_vec4f){1.f, 0.f, 0.f, 1.f};
 	else if (keycode == UARROW)
-		v = {0, 1, 0, 1};
+		v = (t_vec4f){0.f, 1.f, 0.f, 1.f};
 	else if (keycode == DARROW)
-		v = {0, -1, 0, 1};
+		v = (t_vec4f){0.f, -1.f, 0.f, 1.f};
 	mat->m[0] = 1;
-	mat->m[5] = 1
-	mat->m[10] = 1
-	mat->m[15] = 1
-	mat->m[3] = v->pos->x;
-	mat->m[7] = v->pos->y;
-	mat->m[11] = v->pos->z;
+	mat->m[5] = 1;
+	mat->m[10] = 1;
+	mat->m[15] = 1;
+	mat->m[3] = v.x;
+	mat->m[7] = v.y;
+	mat->m[11] = v.z;
 }

@@ -34,7 +34,8 @@ LIST =	main \
 		error/error \
 		draw/drawing \
 		calcul/projection \
-		calcul/transformation
+		calcul/transformation \
+		calcul/calcul
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
 OBJS := $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(LIST)))

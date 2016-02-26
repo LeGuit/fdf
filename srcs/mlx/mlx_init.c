@@ -21,7 +21,7 @@ void				mlx_start(t_data *data)
 	mlx.mlx_ptr = mlx_init();
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, W_WIDTH, W_HEIGHT, "fdf");
 	ft_mlx_image_init(mlx.mlx_ptr, &mlx.screen, I_WIDTH, I_HEIGHT);
-	projection(&data->vertices, &data->vert2d);
+	projection(&data->vertices, &data->vert2d, &mlx.screen.view);
 	draw(&mlx.screen, &data->vert2d);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, mlx.screen.ptr, 0, 0);
 	mlx_key_hook(mlx.win_ptr, key_call, 0);
