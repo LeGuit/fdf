@@ -17,8 +17,6 @@
 # define C_VEC4(ptr)		((t_vec4 const *)ptr)
 # define W_WIDTH				600
 # define W_HEIGHT				400
-# define I_WIDTH				600
-# define I_HEIGHT				400
 
 # define ESC				53
 # define LARROW				123
@@ -32,19 +30,22 @@
 # define PLUS				69
 # define MINUS				78
 
+typedef struct		s_view
+{
+	float			xmax;
+	float			xmin;
+	float			ymax;
+	float			ymin;
+}					t_view;
+
 typedef struct		s_data
 {
 	t_vect			vertices;
 	t_vect			vert2d;
+	t_view			v_world;
 	int				nrow;
 	int				ncol;
 }					t_data;
-
-typedef struct		s_viewport
-{
-	int				xmax;
-	int				ymax;
-}					t_viewport;
 
 typedef struct		s_image
 {
@@ -53,7 +54,8 @@ typedef struct		s_image
 	int				size_line;
 	int				endian;
 	char			*data;
-	t_viewport		view;
+	int				width;
+	int				height;
 }					t_image;
 
 typedef struct		s_mlx
@@ -61,6 +63,8 @@ typedef struct		s_mlx
 	void			*mlx_ptr;
 	void			*win_ptr;
 	t_image			screen;
+	t_view			v_screen;
+
 }					t_mlx;
 
 typedef struct		s_vec3i
@@ -108,8 +112,8 @@ void				error_args(void);
 
 void				matrix_calcul(t_vertex *v, t_matrix *mat);
 
-void				projection(t_vect *vertices, t_vect *vert2d, t_viewport *view);
-void				draw(t_image *image, t_vect *vert2d);
+// void				projection(t_vect *vertices, t_vect *vert2d, t_viewport *view);
+void				draw(t_data *data, t_mlx *mlx);
 void				put_pix_to_img(t_vec3i *v, t_image *i);
 
 #endif

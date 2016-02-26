@@ -19,6 +19,7 @@ int				ft_mlx_image_init(void *mlx_ptr, t_image *image, int width,
 	image->ptr = mlx_new_image(mlx_ptr, width, height);
 	image->data = mlx_get_data_addr(image->ptr, &image->bpp, &image->size_line,
 									&image->endian);
-	ft_printf("bpp: %lld\tsize_line: %lld\tendian: %lld\n", image->bpp, image->size_line, image->endian);
+	image->width = width;
+	image->height = height;
 	return (0);
 }

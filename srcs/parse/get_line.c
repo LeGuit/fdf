@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 14:23:45 by gwoodwar          #+#    #+#             */
-/*   Updated: 2016/02/23 16:53:08 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2016/02/26 18:05:40 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,4 @@ void			get_file(char *av, t_data *data)
 		get_nbrs(line, data);
 	}
 	close(fd);
-	// ft_vect_print(&data->vertices, &print_vertex);
 }
