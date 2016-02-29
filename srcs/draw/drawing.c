@@ -50,20 +50,63 @@ void				world_to_view(t_vec4f *v)
 				- (1.f / sqrt(6.f)) * (tmpx + v->y));
 }
 
+void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i)
+{
+
+// 	t_vec3i			vl;
+// 	int				dx;
+// 	int				dy;
+// 	int				eps;
+
+
+// 	vl = (t_vec3i){v1->x, v1->y, v1->z};
+// 	dx = v2->x - v1->x;
+// 	dy = v2->y - v1->y;
+// 	eps = 0;
+// 	while (vl.x <= v2->x)
+// 	{
+// 		put_pix_to_img(&vl, i);
+// 		vl.x++;
+// 		eps += dy;
+// 		if (eps >= dx)
+// 		{
+// 			vl.y++;
+// 			eps -= dx;
+// 		}
+// 	}
+	t_vec3i			vl;
+
+	vl = (t_vec3i){v1->x, v1->y, v1->z};
+	while (vl.x <= v2->x)
+	{
+		put_pix_to_img(&vl, i);
+		vl.x++;
+		vl.y = (v2->y - v1->y) / (v2->x - v1->x);
+	}
+}
+
 void				draw(t_data *data, t_mlx *mlx)
 {
 	size_t			i;
 	t_vec3i			screen_coord;
 	t_vec4f			view_coord;
+	t_vec3i			screen_coord2;
+	t_vec4f			view_coord2;
 
 	i = 0;
 	while (i < data->vertices.size)
 	{
 		view_coord = CAST(t_vertex *, ft_vect_at(&data->vertices, i))->pos;
+		// if (i + 1 != data->vertices.size)
+			view_coord2 = CAST(t_vertex *, ft_vect_at(&data->vertices, i + 1))->pos;
 		world_to_view(&view_coord);
+		world_to_view(&view_coord2);
 		view_to_screen(&view_coord, &screen_coord,
 						&data->v_world, &mlx->v_screen);
-		put_pix_to_img(&screen_coord, &mlx->screen);
+		view_to_screen(&view_coord2, &screen_coord2,
+						&data->v_world, &mlx->v_screen);
+		draw_lines(&screen_coord, &screen_coord2, &mlx->screen);
+		//put_pix_to_img(&screen_coord, &mlx->screen);
 		i++;
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->screen.ptr, 0, 0);
