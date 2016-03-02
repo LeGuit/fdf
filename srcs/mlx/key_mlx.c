@@ -13,8 +13,6 @@
 #include "fdf.h"
 #include "mlx.h"
 
-#include <stdio.h>
-
 int					key_value(int keycode)
 {
 	ft_printf("key code: %d\n", keycode);

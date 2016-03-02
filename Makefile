@@ -30,7 +30,7 @@ LIST =	main \
 		mlx/mlx_init \
 		mlx/new_image \
 		mlx/key_mlx \
-		mlx/key_call \
+		mlx/key_trans \
 		error/error \
 		draw/drawing \
 		draw/lines_calc \

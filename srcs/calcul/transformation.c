@@ -41,9 +41,9 @@ void				trans_v(t_matrix *mat, int keycode)
 		v = (t_vec4f){-1.f, 0.f, 0.f, 1.f};
 	else if (keycode == RARROW)
 		v = (t_vec4f){1.f, 0.f, 0.f, 1.f};
-	else if (keycode == UARROW)
-		v = (t_vec4f){0.f, 1.f, 0.f, 1.f};
 	else if (keycode == DARROW)
+		v = (t_vec4f){0.f, 1.f, 0.f, 1.f};
+	else if (keycode == UARROW)
 		v = (t_vec4f){0.f, -1.f, 0.f, 1.f};
 	mat->m[0] = 1;
 	mat->m[5] = 1;

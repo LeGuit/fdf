@@ -44,9 +44,7 @@ void				mlx_start(t_data *data)
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, W_WIDTH, W_HEIGHT, "fdf");
 	ft_mlx_image_init(mlx.mlx_ptr, &mlx.screen, W_WIDTH, W_HEIGHT);
 	init_views(&data->v_world, &mlx);
-	mlx_key_hook(mlx.win_ptr, key_call, data);
-	// printf("xmin: %f\t xmax: %f\t ymin: %f\tymax: %f\n", 
-	// 	data->v_world.xmin, data->v_world.xmax, data->v_world.ymin, data->v_world.ymax);
+	mlx_key_hook(mlx.win_ptr, key_hook, data);
 	mlx_loop_hook(mlx.mlx_ptr, fdf_loop, data);
 	mlx_loop(mlx.mlx_ptr);
 }

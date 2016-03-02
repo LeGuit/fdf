@@ -109,13 +109,19 @@ int					ft_mlx_image_init(void *mlx_ptr, t_image *image,
 int					key_value(int keycode);
 int					key_esc();
 int					key_call(int keycode, void *params);
+int					key_hook(int keycode, void *data);
 
 int					key_zoom_in(void *params);
 int					key_zoom_out(void *params);
+int					key_larrow(void *params);
+int					key_rarrow(void *params);
+int					key_uarrow(void *params);
+int					key_darrow(void *params);
 
 void				error_args(void);
 
-void				matrix_calcul(t_vertex *v, t_matrix *mat);
+void				matrix_calcul(t_data *data, t_matrix *mat);
+void				trans_v(t_matrix *mat, int keycode);
 
 void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i);
 void				line_calc(t_data *data, t_mlx *mlx, int index,
