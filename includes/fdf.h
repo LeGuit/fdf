@@ -112,7 +112,8 @@ void				error_args(void);
 
 void				matrix_calcul(t_vertex *v, t_matrix *mat);
 
-// void				projection(t_vect *vertices, t_vect *vert2d, t_viewport *view);
+void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i);
+
 void				draw(t_data *data, t_mlx *mlx);
 void				put_pix_to_img(t_vec3i *v, t_image *i);
 

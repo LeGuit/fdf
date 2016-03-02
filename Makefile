@@ -33,6 +33,7 @@ LIST =	main \
 		mlx/key_call \
 		error/error \
 		draw/drawing \
+		draw/lines \
 		calcul/projection \
 		calcul/transformation \
 		calcul/calcul
