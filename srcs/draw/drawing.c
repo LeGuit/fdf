@@ -55,10 +55,6 @@ void				draw(t_data *data, t_mlx *mlx)
 	int				i;
 	t_vec3i			screen_coord;
 	t_vec4f			view_coord;
-	t_vec3i			screen_coordh;
-	t_vec3i			screen_coordv;
-	t_vec4f			view_coordh;
-	t_vec4f			view_coordv;
 
 	i = 0;
 	while (i + 1 < (int)data->vertices.size)
@@ -69,22 +65,14 @@ void				draw(t_data *data, t_mlx *mlx)
 			&data->v_world, &mlx->v_screen);
 		if (i <= (int)data->vertices.size - data->ncol)
 		{
-			view_coordv = CAST(t_vertex *, ft_vect_at(&data->vertices, i + data->ncol))->pos;
-			world_to_view(&view_coordv);
-			view_to_screen(&view_coordv, &screen_coordv,
-				&data->v_world, &mlx->v_screen);
-			draw_lines(&screen_coord, &screen_coordv, &mlx->screen);
+			line_calc(data, mlx, i + data->ncol, &screen_coord);
 		}
 		if ((i + 1) % data->ncol == 0 && i != 0)
 		{
 			i++;
 			continue ;
 		}
-		view_coordh = CAST(t_vertex *, ft_vect_at(&data->vertices, i + 1))->pos;
-		world_to_view(&view_coordh);
-		view_to_screen(&view_coordh, &screen_coordh,
-						&data->v_world, &mlx->v_screen);
-		draw_lines(&screen_coord, &screen_coordh, &mlx->screen);
+		line_calc(data, mlx, i + 1, &screen_coord);
 		i++;
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->screen.ptr, 0, 0);

@@ -113,6 +113,11 @@ void				error_args(void);
 void				matrix_calcul(t_vertex *v, t_matrix *mat);
 
 void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i);
+void				line_calc(t_data *data, t_mlx *mlx, int index,
+					t_vec3i *screen_coord);
+void				world_to_view(t_vec4f *v);
+void				view_to_screen(t_vec4f *v4f, t_vec3i *v3i,
+						t_view *v_world, t_view *v_screen);
 
 void				draw(t_data *data, t_mlx *mlx);
 void				put_pix_to_img(t_vec3i *v, t_image *i);
