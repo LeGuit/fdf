@@ -15,8 +15,8 @@
 
 # include "libft.h"
 # define C_VEC4(ptr)		((t_vec4 const *)ptr)
-# define W_WIDTH				600
-# define W_HEIGHT				400
+# define W_WIDTH				1600
+# define W_HEIGHT				1200
 
 # define ESC				53
 # define LARROW				123

@@ -25,7 +25,7 @@ void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i)
 	while (1)
 	{
 		put_pix_to_img(&vl, i);
-		if (vl.x == v2->x && vl.y == v2->y)
+		if (vl.x == v2->x || vl.y == v2->y)
 			break ;
 		if (2 * err > -ABS(v2->y - v1->y))
 		{

@@ -37,7 +37,7 @@ void				view_to_screen(t_vec4f *v4f, t_vec3i *v3i,
 					* (v_screen->xmax - v_screen->xmin) + v_screen->xmin);
 	v3i->y = (int)(((v4f->y - v_world->ymin) / (v_world->ymax - v_world->ymin))
 					* (v_screen->ymax - v_screen->ymin) + v_screen->ymin);
-	v3i->z = v4f->z > 0 ? 0xFF0000 : 0xFF0000;
+	v3i->z = v4f->z > 0 ? 0xFF0000 : 0xFFFFFF;
 }
 
 void				world_to_view(t_vec4f *v)
