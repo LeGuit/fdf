@@ -16,7 +16,11 @@
 int					key_call(int keycode, void *params)
 {
 	if (keycode == ESC)
-		key_esc(keycode, params);
+		key_esc();
+	else if (keycode == PLUS)
+		key_zoom_in(params);
+	else if (keycode == MINUS)
+		key_zoom_out(params);
 	// else if (keycode == LARROW)
 	// 	key_trans_left();
 	// else if (keycode == RARROW)
@@ -33,11 +37,7 @@ int					key_call(int keycode, void *params)
 	// 	key_rot_up();
 	// else if (keycode == S_KEY)
 	// 	key_rot_down();
-	// else if (keycode == PLUS)
-	// 	key_zoom_im();
-	// else if (keycode == MINUS)
-	// 	key_zoom_out();
 	else
-		key_value(keycode, params);
+		key_value(keycode);
 	return (0);
 }

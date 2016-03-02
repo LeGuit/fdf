@@ -38,15 +38,6 @@ typedef struct		s_view
 	float			ymin;
 }					t_view;
 
-typedef struct		s_data
-{
-	t_vect			vertices;
-	t_vect			vert2d;
-	t_view			v_world;
-	int				nrow;
-	int				ncol;
-}					t_data;
-
 typedef struct		s_image
 {
 	void			*ptr;
@@ -66,6 +57,16 @@ typedef struct		s_mlx
 	t_view			v_screen;
 
 }					t_mlx;
+
+typedef struct		s_data
+{
+	t_vect			vertices;
+	t_vect			vert2d;
+	t_view			v_world;
+	t_mlx			*mlx;
+	int				nrow;
+	int				ncol;
+}					t_data;
 
 typedef struct		s_vec3i
 {
@@ -105,9 +106,13 @@ void				mlx_start(t_data *data);
 int					ft_mlx_image_init(void *mlx_ptr, t_image *image,
 					int width, int height);
 
-int					key_value(int keycode, void *params);
-int					key_esc(int keycode, void *params);
+int					key_value(int keycode);
+int					key_esc();
 int					key_call(int keycode, void *params);
+
+int					key_zoom_in(void *params);
+int					key_zoom_out(void *params);
+
 void				error_args(void);
 
 void				matrix_calcul(t_vertex *v, t_matrix *mat);

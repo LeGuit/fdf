@@ -44,4 +44,5 @@ void				matrix_calcul(t_vertex *v, t_matrix *mat)
 // 		key_zoom_im();
 // 	else if (keycode == MINUS)
 // 		key_zoom_out();
+// 	matrix_calcul(v, &mat);
 // }
