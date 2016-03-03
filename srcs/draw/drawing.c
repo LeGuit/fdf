@@ -63,7 +63,7 @@ void				draw(t_data *data, t_mlx *mlx)
 		world_to_view(&view_coord);
 		view_to_screen(&view_coord, &screen_coord,
 			data, &mlx->v_screen);
-		if (i <= (int)data->vertices.size - data->ncol)
+		if (i < (int)data->vertices.size - data->ncol)
 		{
 			line_calc(data, mlx, i + data->ncol, &screen_coord);
 		}
