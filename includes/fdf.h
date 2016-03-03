@@ -17,7 +17,7 @@
 # define C_VEC4(ptr)		((t_vec4 const *)ptr)
 # define W_WIDTH				1600
 # define W_HEIGHT				1200
-# define C_MIN					0x000000
+# define C_MIN					0xFF0000
 # define C_MAX					0xFFFFFF
 
 # define ESC				53

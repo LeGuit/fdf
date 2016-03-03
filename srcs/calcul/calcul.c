@@ -38,6 +38,8 @@ int					key_hook(int keycode, void *data)
 {
 	t_matrix		mat;
 
+	if (keycode != PLUS && keycode != MINUS)
+		return (0);
 	if (keycode == PLUS)
 		key_zoom_in(data);
 	else if (keycode == MINUS)
@@ -66,5 +68,5 @@ int					key_hook(int keycode, void *data)
 		matrix_calcul(data, &mat);
 
 	}
-	return (0);
+	return (1);
 }
