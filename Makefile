@@ -34,7 +34,6 @@ LIST =	main \
 		error/error \
 		draw/drawing \
 		draw/lines_calc \
-		draw/color \
 		draw/mix_color \
 		calcul/transformation \
 		calcul/calcul

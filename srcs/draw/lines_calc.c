@@ -54,7 +54,7 @@ void				line_calc(t_data *data, t_mlx *mlx, int index,
 	view_coord2 = CAST(t_vertex *, ft_vect_at(&data->vertices, index))->pos;
 	world_to_view(&view_coord2);
 	view_to_screen(&view_coord2, &screen_coord2,
-		&data->v_world, &mlx->v_screen);
+		data, &mlx->v_screen);
 	gradmax = MAX(ABS(screen_coord->x - screen_coord2.x), ABS(screen_coord->y - screen_coord2.y));
 	draw_lines(screen_coord, &screen_coord2, &mlx->screen, gradmax);
 }

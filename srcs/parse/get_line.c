@@ -32,6 +32,8 @@ static void		get_nbrs(char *line, t_data *data)
 		ft_vect_push_back(&data->vertices, &vertex);
 		while (ft_isdigit(*tmp_line) || *tmp_line == '-')
 			tmp_line++;
+		data->zmin = MIN(data->zmin, vertex.pos.z);
+		data->zmax = MAX(data->zmax, vertex.pos.z);
 		i++;
 	}
 	free(line);

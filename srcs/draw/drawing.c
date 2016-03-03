@@ -31,13 +31,13 @@ void				put_pix_to_img(t_vec3i *v, t_image *i)
 }
 
 void				view_to_screen(t_vec4f *v4f, t_vec3i *v3i,
-						t_view *v_world, t_view *v_screen)
+						t_data *data, t_view *v_screen)
 {
-	v3i->x = (int)(((v4f->x - v_world->xmin) / (v_world->xmax - v_world->xmin))
+	v3i->x = (int)(((v4f->x - data->v_world.xmin) / (data->v_world.xmax - data->v_world.xmin))
 					* (v_screen->xmax - v_screen->xmin) + v_screen->xmin);
-	v3i->y = (int)(((v4f->y - v_world->ymin) / (v_world->ymax - v_world->ymin))
+	v3i->y = (int)(((v4f->y - data->v_world.ymin) / (data->v_world.ymax - data->v_world.ymin))
 					* (v_screen->ymax - v_screen->ymin) + v_screen->ymin);
-	v3i->z = set_color((int)v4f->z); //> 0 ? 0xFF0000 : 0xFFFFFF;
+	v3i->z = mix_color(C_MIN, C_MAX, (v4f->z - data->zmin) / (data->zmax - data->zmin)); //> 0 ? 0xFF0000 : 0xFFFFFF;
 }
 
 void				world_to_view(t_vec4f *v)
@@ -62,7 +62,7 @@ void				draw(t_data *data, t_mlx *mlx)
 		view_coord = CAST(t_vertex *, ft_vect_at(&data->vertices, i))->pos;
 		world_to_view(&view_coord);
 		view_to_screen(&view_coord, &screen_coord,
-			&data->v_world, &mlx->v_screen);
+			data, &mlx->v_screen);
 		if (i <= (int)data->vertices.size - data->ncol)
 		{
 			line_calc(data, mlx, i + data->ncol, &screen_coord);

@@ -17,6 +17,8 @@
 # define C_VEC4(ptr)		((t_vec4 const *)ptr)
 # define W_WIDTH				1600
 # define W_HEIGHT				1200
+# define C_MIN					0x000000
+# define C_MAX					0xFFFFFF
 
 # define ESC				53
 # define LARROW				123
@@ -66,6 +68,8 @@ typedef struct		s_data
 	t_mlx			*mlx;
 	int				nrow;
 	int				ncol;
+	int				zmin;
+	int				zmax;
 }					t_data;
 
 typedef struct		s_vec3i
@@ -127,7 +131,7 @@ void				line_calc(t_data *data, t_mlx *mlx, int index,
 					t_vec3i *screen_coord);
 void				world_to_view(t_vec4f *v);
 void				view_to_screen(t_vec4f *v4f, t_vec3i *v3i,
-						t_view *v_world, t_view *v_screen);
+						t_data *data, t_view *v_screen);
 
 void				draw(t_data *data, t_mlx *mlx);
 void				put_pix_to_img(t_vec3i *v, t_image *i);

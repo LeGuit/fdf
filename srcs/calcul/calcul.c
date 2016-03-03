@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "mlx.h"
 #define CAST(type, ptr)	((type)(ptr))
 #define VPOS(i)			CAST(t_vertex *, ft_vect_at(&data->vertices, i))->pos	
 
@@ -51,7 +52,7 @@ int					key_hook(int keycode, void *data)
 		key_uarrow(data);
 	else if (keycode == DARROW)
 		key_darrow(data);
-	else
+	else 
 	{ 
 		ft_bzero(&mat, 16);
 		if (keycode == D_KEY)
@@ -63,6 +64,7 @@ int					key_hook(int keycode, void *data)
 		else if (keycode == S_KEY)
 			rot_y(&mat, -10);
 		matrix_calcul(data, &mat);
+
 	}
 	return (0);
 }
