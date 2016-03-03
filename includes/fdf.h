@@ -132,6 +132,11 @@ void				view_to_screen(t_vec4f *v4f, t_vec3i *v3i,
 void				draw(t_data *data, t_mlx *mlx);
 void				put_pix_to_img(t_vec3i *v, t_image *i);
 
-int					get_color(int z1, int z2, int grad, int gradmax);
+void				rot_x(t_matrix *mat, int theta);
+void				rot_y(t_matrix *mat, int theta);
+
+int					set_color(int z);
+int					mix_color(int c1, int c2, float lambda);
+// int					get_color(int z1, int z2, int grad, int gradmax);
 
 #endif

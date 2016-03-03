@@ -35,7 +35,7 @@ void				matrix_calcul(t_data *data, t_matrix *mat)
 
 int					key_hook(int keycode, void *data)
 {
-	// t_matrix		mat;
+	t_matrix		mat;
 
 	if (keycode == PLUS)
 		key_zoom_in(data);
@@ -52,19 +52,17 @@ int					key_hook(int keycode, void *data)
 	else if (keycode == DARROW)
 		key_darrow(data);
 	else
-		key_value(keycode);
+	{ 
+		ft_bzero(&mat, 16);
+		if (keycode == D_KEY)
+			rot_x(&mat, 10);
+		else if (keycode == A_KEY)
+			rot_x(&mat, -10);
+		else if (keycode == W_KEY)
+			rot_y(&mat, 10);
+		else if (keycode == S_KEY)
+			rot_y(&mat, -10);
+		matrix_calcul(data, &mat);
+	}
 	return (0);
-	// {
-	// 	ft_bzero(&mat, 16);
-	// 	// else if (keycode == D_KEY)
-	// 	// 	key_rot_right();
-	// 	// else if (keycode == A_KEY)
-	// 	// 	key_rot_left();
-	// 	// else if (keycode == W_KEY)
-	// 	// 	key_rot_up();
-	// 	// else if (keycode == S_KEY)
-	// 	// 	key_rot_down();
-	// 	matrix_calcul(data, &mat);
-	// }
-	// return (0);
 }

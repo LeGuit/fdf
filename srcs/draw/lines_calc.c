@@ -22,11 +22,11 @@ static void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i, int gradmax)
 	int				grad;
 
 	err = ABS(v2->x - v1->x) - ABS(v2->y - v1->y);
-	vl = (t_vec3i){v1->x, v1->y, v1->z};
-	grad = 1;
+	vl = *v1;
+	grad = 0;
 	while (1)
 	{
-		vl.z = get_color(v1->z, v2->z, grad, gradmax);
+		vl.z = mix_color(v1->z, v2->z, ((float)grad / (float)gradmax));
 		put_pix_to_img(&vl, i);
 		if (vl.x == v2->x || vl.y == v2->y)
 			break ;
@@ -56,8 +56,5 @@ void				line_calc(t_data *data, t_mlx *mlx, int index,
 	view_to_screen(&view_coord2, &screen_coord2,
 		&data->v_world, &mlx->v_screen);
 	gradmax = MAX(ABS(screen_coord->x - screen_coord2.x), ABS(screen_coord->y - screen_coord2.y));
-	if (screen_coord->z < screen_coord2.z)
-		draw_lines(screen_coord, &screen_coord2, &mlx->screen, gradmax);
-	else
-		draw_lines(&screen_coord2, screen_coord, &mlx->screen, gradmax);
+	draw_lines(screen_coord, &screen_coord2, &mlx->screen, gradmax);
 }
