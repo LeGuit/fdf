@@ -17,7 +17,7 @@
 # define C_VEC4(ptr)		((t_vec4 const *)ptr)
 # define W_WIDTH				1600
 # define W_HEIGHT				1200
-# define C_MIN					0xFF0000
+# define C_MIN					0x424242
 # define C_MAX					0xFFFFFF
 
 # define ESC				53
@@ -116,12 +116,12 @@ int					key_esc();
 int					key_call(int keycode, void *params);
 int					key_hook(int keycode, void *data);
 
-int					key_zoom_in(void *params);
-int					key_zoom_out(void *params);
-int					key_larrow(void *params);
-int					key_rarrow(void *params);
-int					key_uarrow(void *params);
-int					key_darrow(void *params);
+int					key_zoom_in(t_data *data);
+int					key_zoom_out(t_data *data);
+int					key_larrow(t_data *data);
+int					key_rarrow(t_data *data);
+int					key_uarrow(t_data *data);
+int					key_darrow(t_data *data);
 int					key_return(t_data *data);
 
 void				error_args(void);

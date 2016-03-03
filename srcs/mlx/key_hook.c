@@ -55,9 +55,9 @@ int					key_hook(int key, void *data)
 	if (need_reset(key))
 		return (0);
 	if (key == PLUS)
-		key_zoom_in(data);
+		key_zoom_in((t_data *)data);
 	else if (key == MINUS)
-		key_zoom_out(data);
+		key_zoom_out((t_data *)data);
 	else if (key == ESC)
 		key_esc();
 	else if (key == RETURN)

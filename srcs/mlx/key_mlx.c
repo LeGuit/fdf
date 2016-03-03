@@ -25,21 +25,21 @@ int					key_esc()
 	exit(0);
 }
 
-int					key_zoom_in(void *params)
+int					key_zoom_in(t_data *data)
 {
-	((t_data *)params)->v_world.xmin /= 1.1f;
-	((t_data *)params)->v_world.ymin /= 1.1f;
-	((t_data *)params)->v_world.xmax /= 1.1f;
-	((t_data *)params)->v_world.ymax /= 1.1f;
+	data->v_world.xmin /= 1.1f;
+	data->v_world.ymin /= 1.1f;
+	data->v_world.xmax /= 1.1f;
+	data->v_world.ymax /= 1.1f;
 	return (0);
 }
 
-int					key_zoom_out(void *params)
+int					key_zoom_out(t_data *data)
 {
-	((t_data *)params)->v_world.xmin--;
-	((t_data *)params)->v_world.ymin--;
-	((t_data *)params)->v_world.xmax++;
-	((t_data *)params)->v_world.ymax++;
+	data->v_world.xmin *= 1.1f;
+	data->v_world.ymin *= 1.1f;
+	data->v_world.xmax *= 1.1f;
+	data->v_world.ymax *= 1.1f;
 	return (0);
 }
 

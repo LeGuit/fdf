@@ -2,30 +2,30 @@
 #include "fdf.h"
 #include "mlx.h"
 
-int					key_larrow(void *params)
+int					key_larrow(t_data *data)
 {
-	((t_data *)params)->v_world.xmin++;
-	((t_data *)params)->v_world.xmax++;
+	data->v_world.xmin++;
+	data->v_world.xmax++;
 	return (0);
 }
 
-int					key_rarrow(void *params)
+int					key_rarrow(t_data *data)
 {
-	((t_data *)params)->v_world.xmin--;
-	((t_data *)params)->v_world.xmax--;
+	data->v_world.xmin--;
+	data->v_world.xmax--;
 	return (0);
 }
 
-int					key_uarrow(void *params)
+int					key_uarrow(t_data *data)
 {
-	((t_data *)params)->v_world.ymin--;
-	((t_data *)params)->v_world.ymax--;
+	data->v_world.ymin--;
+	data->v_world.ymax--;
 	return (0);
 }
 
-int					key_darrow(void *params)
+int					key_darrow(t_data *data)
 {
-	((t_data *)params)->v_world.ymin++;
-	((t_data *)params)->v_world.ymax++;
+	data->v_world.ymin++;
+	data->v_world.ymax++;
 	return (0);
 }

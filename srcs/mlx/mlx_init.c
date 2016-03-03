@@ -12,9 +12,6 @@
 
 #include "fdf.h"
 #include "mlx.h"
-#include <math.h>
-
-#include <stdio.h>
 
 static void			init_views(t_data *data, t_mlx *mlx)
 {

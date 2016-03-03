@@ -37,7 +37,7 @@ void				view_to_screen(t_vec4f *v4f, t_vec3i *v3i,
 					* (v_screen->xmax - v_screen->xmin) + v_screen->xmin);
 	v3i->y = (int)(((v4f->y - data->v_world.ymin) / (data->v_world.ymax - data->v_world.ymin))
 					* (v_screen->ymax - v_screen->ymin) + v_screen->ymin);
-	v3i->z = mix_color(C_MIN, C_MAX, (v4f->z - data->zmin) / (data->zmax - data->zmin)); //> 0 ? 0xFF0000 : 0xFFFFFF;
+	v3i->z = mix_color(C_MIN, C_MAX, (v4f->z - data->zmin) / (data->zmax - data->zmin));
 }
 
 void				world_to_view(t_vec4f *v)
