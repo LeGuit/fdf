@@ -64,7 +64,7 @@ int					key_hook(int key, void *data)
 		key_return((t_data *)data);
 	else if (key == LARROW || key == RARROW || key == DARROW || key == UARROW)
 		key_trans(key, (t_data *)data);
-	else if (key == D_KEY || key == A_KEY || key == W_KEY || key == S_KEY) 
+	else if (key == D_KEY || key == A_KEY || key == W_KEY || key == S_KEY)
 		key_rot(key, (t_data *)data);
 	return (1);
 }

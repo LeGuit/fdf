@@ -33,11 +33,14 @@ void				put_pix_to_img(t_vec3i *v, t_image *i)
 void				view_to_screen(t_vec4f *v4f, t_vec3i *v3i,
 						t_data *data, t_view *v_screen)
 {
-	v3i->x = (int)(((v4f->x - data->v_world.xmin) / (data->v_world.xmax - data->v_world.xmin))
-					* (v_screen->xmax - v_screen->xmin) + v_screen->xmin);
-	v3i->y = (int)(((v4f->y - data->v_world.ymin) / (data->v_world.ymax - data->v_world.ymin))
-					* (v_screen->ymax - v_screen->ymin) + v_screen->ymin);
-	v3i->z = mix_color(C_MIN, C_MAX, (v4f->z - data->zmin) / (data->zmax - data->zmin));
+	v3i->x = (int)(((v4f->x - data->v_world.xmin)
+		/ (data->v_world.xmax - data->v_world.xmin))
+		* (v_screen->xmax - v_screen->xmin) + v_screen->xmin);
+	v3i->y = (int)(((v4f->y - data->v_world.ymin)
+		/ (data->v_world.ymax - data->v_world.ymin))
+		* (v_screen->ymax - v_screen->ymin) + v_screen->ymin);
+	v3i->z = mix_color(C_MIN, C_MAX, (v4f->z - data->zmin)
+		/ (data->zmax - data->zmin));
 }
 
 void				world_to_view(t_vec4f *v)

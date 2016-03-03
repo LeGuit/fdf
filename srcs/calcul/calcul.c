@@ -13,7 +13,7 @@
 #include "fdf.h"
 #include "mlx.h"
 #define CAST(type, ptr)	((type)(ptr))
-#define VPOS(i)			CAST(t_vertex *, ft_vect_at(&data->vertices, i))->pos	
+#define VPOS(i)			CAST(t_vertex *, ft_vect_at(&data->vertices, i))->pos
 
 void				matrix_calcul(t_data *data, t_matrix *mat)
 {
@@ -28,7 +28,7 @@ void				matrix_calcul(t_data *data, t_matrix *mat)
 					+ mat->m[6] * VPOS(i).z + mat->m[7] * VPOS(i).w;
 		VPOS(i).z = mat->m[8] * VPOS(i).x + mat->m[9] * VPOS(i).y
 					+ mat->m[10] * VPOS(i).z + mat->m[11] * VPOS(i).w;
-		VPOS(i).w = mat->m[12] * VPOS(i).x + mat->m[13] * VPOS(i).y 
+		VPOS(i).w = mat->m[12] * VPOS(i).x + mat->m[13] * VPOS(i).y
 					+ mat->m[14] * VPOS(i).z + mat->m[15] * VPOS(i).w;
 		i++;
 	}

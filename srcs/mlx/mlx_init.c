@@ -27,8 +27,14 @@ static void			init_views(t_data *data, t_mlx *mlx)
 
 int					fdf_loop(t_data *data)
 {
-	ft_bzero(data->mlx->screen.data, data->mlx->screen.width * data->mlx->screen.height * 4);
+	// t_vect			vert;
+
+	ft_bzero(data->mlx->screen.data, data->mlx->screen.width
+		* data->mlx->screen.height * 4);
+	// cacl(&vert, data);
+	// draw(&vert);
 	draw(data, data->mlx);
+	//ft_vect_del(vert, doadelfunc);
 	return (0);
 }
 

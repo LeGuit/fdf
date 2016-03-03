@@ -19,7 +19,7 @@ int					key_value(int keycode)
 	return (keycode);
 }
 
-int					key_esc()
+int					key_esc(void)
 {
 	ft_printf("ESC pressed:\nEXIT SUCCESS");
 	exit(0);

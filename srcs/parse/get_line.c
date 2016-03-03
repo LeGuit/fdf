@@ -12,7 +12,6 @@
 
 #include "fdf.h"
 #include <fcntl.h>
-#include <stdio.h>
 
 static void		get_nbrs(char *line, t_data *data)
 {
@@ -34,7 +33,6 @@ static void		get_nbrs(char *line, t_data *data)
 		while (ft_isdigit(*tmp_line) || *tmp_line == '-')
 			tmp_line++;
 		data->zmin = MIN(data->zmin, vertex.pos.z);
-		// printf("%f\n", data->zmin);
 		data->zmax = MAX(data->zmax, vertex.pos.z);
 		i++;
 	}
