@@ -31,6 +31,7 @@
 # define S_KEY				1
 # define PLUS				69
 # define MINUS				78
+# define RETURN				36
 
 typedef struct		s_view
 {
@@ -68,8 +69,8 @@ typedef struct		s_data
 	t_mlx			*mlx;
 	int				nrow;
 	int				ncol;
-	int				zmin;
-	int				zmax;
+	float			zmin;
+	float			zmax;
 }					t_data;
 
 typedef struct		s_vec3i
@@ -121,6 +122,7 @@ int					key_larrow(void *params);
 int					key_rarrow(void *params);
 int					key_uarrow(void *params);
 int					key_darrow(void *params);
+int					key_return(t_data *data);
 
 void				error_args(void);
 

@@ -12,6 +12,7 @@
 
 #include "fdf.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 static void		get_nbrs(char *line, t_data *data)
 {
@@ -27,12 +28,13 @@ static void		get_nbrs(char *line, t_data *data)
 			tmp_line++;
 		vertex.pos.x = (float)i;
 		vertex.pos.y = (float)data->nrow;
-		vertex.pos.z = (float)(ft_atoi(tmp_line));
+		vertex.pos.z = (float)(ft_atoi(tmp_line)) / 10.f;
 		vertex.pos.w = (float)1;
 		ft_vect_push_back(&data->vertices, &vertex);
 		while (ft_isdigit(*tmp_line) || *tmp_line == '-')
 			tmp_line++;
 		data->zmin = MIN(data->zmin, vertex.pos.z);
+		// printf("%f\n", data->zmin);
 		data->zmax = MAX(data->zmax, vertex.pos.z);
 		i++;
 	}

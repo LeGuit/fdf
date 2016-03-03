@@ -27,10 +27,10 @@ int					key_esc()
 
 int					key_zoom_in(void *params)
 {
-	((t_data *)params)->v_world.xmin++;
-	((t_data *)params)->v_world.ymin++;
-	((t_data *)params)->v_world.xmax--;
-	((t_data *)params)->v_world.ymax--;
+	((t_data *)params)->v_world.xmin /= 1.1f;
+	((t_data *)params)->v_world.ymin /= 1.1f;
+	((t_data *)params)->v_world.xmax /= 1.1f;
+	((t_data *)params)->v_world.ymax /= 1.1f;
 	return (0);
 }
 
@@ -40,5 +40,14 @@ int					key_zoom_out(void *params)
 	((t_data *)params)->v_world.ymin--;
 	((t_data *)params)->v_world.xmax++;
 	((t_data *)params)->v_world.ymax++;
+	return (0);
+}
+
+int					key_return(t_data *data)
+{
+	data->v_world.xmin = -(data->ncol) / 1.3f;
+	data->v_world.xmax = (data->ncol) / 1.3f;
+	data->v_world.ymin = -(data->nrow) / 1.3f;
+	data->v_world.ymax = (data->nrow) / 1.3f;
 	return (0);
 }

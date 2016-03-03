@@ -17,7 +17,7 @@ static int			need_reset(int key)
 	if (key != PLUS && key != MINUS && key != LARROW
 		&& key != UARROW && key != DARROW && key != RARROW
 		&& key != A_KEY && key != S_KEY && key != W_KEY
-		&& key != D_KEY && key != ESC)
+		&& key != D_KEY && key != ESC && key != RETURN)
 		return (1);
 	return (0);
 }
@@ -60,6 +60,8 @@ int					key_hook(int key, void *data)
 		key_zoom_out(data);
 	else if (key == ESC)
 		key_esc();
+	else if (key == RETURN)
+		key_return((t_data *)data);
 	else if (key == LARROW || key == RARROW || key == DARROW || key == UARROW)
 		key_trans(key, (t_data *)data);
 	else if (key == D_KEY || key == A_KEY || key == W_KEY || key == S_KEY) 
