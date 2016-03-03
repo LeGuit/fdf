@@ -31,6 +31,7 @@ LIST =	main \
 		mlx/new_image \
 		mlx/key_mlx \
 		mlx/key_trans \
+		mlx/key_hook \
 		error/error \
 		draw/drawing \
 		draw/lines_calc \
