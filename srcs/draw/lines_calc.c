@@ -15,7 +15,7 @@
 
 #define CAST(type, ptr)				((type)(ptr))
 
-void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i)
+static void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i, int gradmax)
 {
 	t_vec3i			vl;
 	int				err;
@@ -26,7 +26,7 @@ void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i)
 	grad = 1;
 	while (1)
 	{
-		vl.z = get_color(v1->z, v2->z, grad);
+		vl.z = get_color(v1->z, v2->z, grad, gradmax);
 		put_pix_to_img(&vl, i);
 		if (vl.x == v2->x || vl.y == v2->y)
 			break ;
@@ -40,7 +40,6 @@ void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i)
 			err += ABS(v2->x - v1->x);
 			vl.y += v1->y < v2->y ? 1 : -1;
 		}
-		// vl.z = ABS(v1->z - v2->z) > 0 ? 0xFFFFFF : 0xFF0000;
 		grad++;
 	}
 }
@@ -50,10 +49,15 @@ void				line_calc(t_data *data, t_mlx *mlx, int index,
 {
 	t_vec3i			screen_coord2;
 	t_vec4f			view_coord2;
+	int				gradmax;
 
 	view_coord2 = CAST(t_vertex *, ft_vect_at(&data->vertices, index))->pos;
 	world_to_view(&view_coord2);
 	view_to_screen(&view_coord2, &screen_coord2,
 		&data->v_world, &mlx->v_screen);
-	draw_lines(screen_coord, &screen_coord2, &mlx->screen);
+	gradmax = MAX(ABS(screen_coord->x - screen_coord2.x), ABS(screen_coord->y - screen_coord2.y));
+	if (screen_coord->z < screen_coord2.z)
+		draw_lines(screen_coord, &screen_coord2, &mlx->screen, gradmax);
+	else
+		draw_lines(&screen_coord2, screen_coord, &mlx->screen, gradmax);
 }

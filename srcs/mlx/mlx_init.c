@@ -45,6 +45,7 @@ void				mlx_start(t_data *data)
 	ft_mlx_image_init(mlx.mlx_ptr, &mlx.screen, W_WIDTH, W_HEIGHT);
 	init_views(&data->v_world, &mlx);
 	mlx_key_hook(mlx.win_ptr, key_hook, data);
+	mlx_expose_hook(mlx.win_ptr, fdf_loop, data);
 	mlx_loop_hook(mlx.mlx_ptr, fdf_loop, data);
 	mlx_loop(mlx.mlx_ptr);
 }
