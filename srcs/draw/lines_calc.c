@@ -19,11 +19,14 @@ void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i)
 {
 	t_vec3i			vl;
 	int				err;
+	int				grad;
 
 	err = ABS(v2->x - v1->x) - ABS(v2->y - v1->y);
 	vl = (t_vec3i){v1->x, v1->y, v1->z};
+	grad = 1;
 	while (1)
 	{
+		vl.z = get_color(v1->z, v2->z, grad);
 		put_pix_to_img(&vl, i);
 		if (vl.x == v2->x || vl.y == v2->y)
 			break ;
@@ -36,8 +39,9 @@ void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i)
 		{
 			err += ABS(v2->x - v1->x);
 			vl.y += v1->y < v2->y ? 1 : -1;
-			vl.z = v2->z;
 		}
+		// vl.z = ABS(v1->z - v2->z) > 0 ? 0xFFFFFF : 0xFF0000;
+		grad++;
 	}
 }
 
