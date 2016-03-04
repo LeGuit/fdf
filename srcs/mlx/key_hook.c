@@ -28,13 +28,13 @@ static void			key_rot(int key, t_data *data)
 
 	ft_bzero(&mat, 16);
 	if (key == D_KEY)
-		rot_x(&mat, 10);
+		rot_proj(&mat, 30);
 	else if (key == A_KEY)
-		rot_x(&mat, -10);
+		rot_proj(&mat, -30);
 	else if (key == W_KEY)
-		rot_y(&mat, 10);
+		rot_norm(&mat, 30);
 	else if (key == S_KEY)
-		rot_y(&mat, -10);
+		rot_norm(&mat, -30);
 	matrix_calcul(data, &mat);
 }
 

@@ -30,52 +30,55 @@ void				put_pix_to_img(t_vec3i *v, t_image *i)
 	CAST(int *, i->data)[off_x + off_y] = v->z;
 }
 
-void				view_to_screen(t_vec4f *v4f, t_vec3i *v3i,
-						t_data *data, t_view *v_screen)
-{
-	v3i->x = (int)(((v4f->x - data->v_world.xmin)
-		/ (data->v_world.xmax - data->v_world.xmin))
-		* (v_screen->xmax - v_screen->xmin) + v_screen->xmin);
-	v3i->y = (int)(((v4f->y - data->v_world.ymin)
-		/ (data->v_world.ymax - data->v_world.ymin))
-		* (v_screen->ymax - v_screen->ymin) + v_screen->ymin);
-	v3i->z = mix_color(C_MIN, C_MAX, (v4f->z - data->zmin)
-		/ (data->zmax - data->zmin));
-}
+// void				draw(t_data *data, t_mlx *mlx)
+// {
+// 	int				i;
+// 	t_vec3i			screen_coord;
+// 	t_vec4f			view_coord;
 
-void				world_to_view(t_vec4f *v)
-{
-	float			tmpx;
+// 	i = 0;
+// 	while (i + 1 < (int)data->vertices.size)
+// 	{
+// 		view_coord = CAST(t_vertex *, ft_vect_at(&data->vertices, i))->pos;
+// 		world_to_view(&view_coord);
+// 		view_to_screen(&view_coord, &screen_coord,
+// 			data, &mlx->v_screen);
+// 		if (i < (int)data->vertices.size - data->ncol)
+// 		{
+// 			line_calc(data, mlx, i + data->ncol, &screen_coord);
+// 		}
+// 		if ((i + 1) % data->ncol == 0 && i != 0)
+// 		{
+// 			i++;
+// 			continue ;
+// 		}
+// 		line_calc(data, mlx, i + 1, &screen_coord);
+// 		i++;
+// 	}
+// 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->screen.ptr, 0, 0);
+// }
 
-	tmpx = v->x;
-	v->x = (sqrt(2.f) / 2.f * (tmpx - v->y));
-	v->y = (sqrt(2.f / 3.f) * (v->z)
-				- (1.f / sqrt(6.f)) * (tmpx + v->y));
-}
-
-void				draw(t_data *data, t_mlx *mlx)
+void				new_draw(t_vec3i *v, t_data *data)
 {
 	int				i;
-	t_vec3i			screen_coord;
-	t_vec4f			view_coord;
+	int				gradmax;
 
 	i = 0;
-	while (i + 1 < (int)data->vertices.size)
+	while (i < (data->ncol * data->nrow))
 	{
-		view_coord = CAST(t_vertex *, ft_vect_at(&data->vertices, i))->pos;
-		world_to_view(&view_coord);
-		view_to_screen(&view_coord, &screen_coord,
-			data, &mlx->v_screen);
 		if (i < (int)data->vertices.size - data->ncol)
 		{
-			line_calc(data, mlx, i + data->ncol, &screen_coord);
+			gradmax = MAX(ABS(v[i]->x - v[i + data->ncol]->x),
+				ABS(v[i]->y - v[i + data->ncol]->y));
+			draw_line(v[i], v[i + data->ncol], data->mlx->screen->data, gradmax);
 		}
 		if ((i + 1) % data->ncol == 0 && i != 0)
 		{
 			i++;
 			continue ;
 		}
-		line_calc(data, mlx, i + 1, &screen_coord);
+		gradmax = MAX(ABS(v[i]->x - v[i + 1]->x), ABS(v[i]->y - v[i + 1]->y));
+		draw_line(v[i], v[i + 1], data->mlx->screen->data, gradmax);
 		i++;
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->screen.ptr, 0, 0);
