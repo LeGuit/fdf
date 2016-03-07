@@ -37,7 +37,8 @@ LIST =	main \
 		draw/lines_calc \
 		draw/mix_color \
 		calcul/transformation \
-		calcul/calcul
+		calcul/calcul \
+		calcul/vect_proj
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
 OBJS := $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(LIST)))

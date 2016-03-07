@@ -27,16 +27,16 @@ static void			init_views(t_data *data, t_mlx *mlx)
 
 int					fdf_loop(t_data *data)
 {
-	t_vec3i			*v3i_ptr;
+	// t_vec3i			*v3i_ptr;
 
-	v3i_ptr = NULL;
+	// v3i_ptr = NULL;
 	ft_bzero(data->mlx->screen.data, data->mlx->screen.width
 		* data->mlx->screen.height * 4);
-	build_vect(data, v3i_ptr, data->mlx);
-	new_draw(v3i_ptrm data);
+	// build_vect(data, v3i_ptr, data->mlx);
+	// new_draw(v3i_ptrm data);
 	draw(data, data->mlx);
-	if (v3i_ptr)
-		free(v3i_ptr);
+	// if (v3i_ptr)
+	// 	free(v3i_ptr);
 	return (0);
 }
 
