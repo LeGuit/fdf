@@ -97,7 +97,7 @@ int					key_value(int keycode);
 int					key_esc();
 int					key_call(int keycode, void *params);
 int					key_hook(int keycode, void *data);
-int					mouse_hook(int button,int x,int y,void *param);
+int					mouse_hook(int button, int x, int y, void *param);
 
 int					key_zoom_in(t_data *data);
 int					key_zoom_out(t_data *data);
@@ -120,9 +120,6 @@ void				view_to_screen(t_vec4f *v4f, t_vec3i *v3i,
 
 void				draw(t_data *data, t_mlx *mlx);
 void				put_pix_to_img(t_vec3i *v, t_image *i);
-
-// void				rot_proj(t_matrix *mat, int theta);
-// void				rot_norm(t_matrix *mat, int theta);
 
 int					set_color(int z);
 int					mix_color(int c1, int c2, float lambda);

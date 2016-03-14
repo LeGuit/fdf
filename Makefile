@@ -36,8 +36,6 @@ LIST =	main \
 		draw/drawing \
 		draw/lines_calc \
 		draw/mix_color \
-		calcul/transformation \
-		calcul/calcul \
 		calcul/vect_proj
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))

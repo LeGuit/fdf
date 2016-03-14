@@ -33,6 +33,30 @@ static void			key_trans(int key, t_data *data)
 		key_darrow(data);
 }
 
+static void			mouse_hook_bis(int button, int x, int y, void *data)
+{
+	if (button == L_CLICK && x < W_WIDTH / 3 && y < W_HEIGHT / 3)
+	{
+		key_trans(LARROW, (t_data *)data);
+		key_trans(UARROW, (t_data *)data);
+	}
+	else if (button == L_CLICK && x > W_WIDTH * 2 / 3 && y < W_HEIGHT / 3)
+	{
+		key_trans(RARROW, (t_data *)data);
+		key_trans(UARROW, (t_data *)data);
+	}
+	else if (button == L_CLICK && x > W_WIDTH * 2 / 3 && y > W_HEIGHT * 2 / 3)
+	{
+		key_trans(RARROW, (t_data *)data);
+		key_trans(DARROW, (t_data *)data);
+	}
+	else if (button == L_CLICK && x < W_WIDTH / 3 && y > W_HEIGHT * 2 / 3)
+	{
+		key_trans(LARROW, (t_data *)data);
+		key_trans(DARROW, (t_data *)data);
+	}
+}
+
 int					mouse_hook(int button, int x, int y, void *data)
 {
 	if (button == M_PLUS)
@@ -53,26 +77,8 @@ int					mouse_hook(int button, int x, int y, void *data)
 	else if (button == L_CLICK && y > W_HEIGHT * 2 / 3
 		&& x > W_WIDTH / 3 && x < W_WIDTH * 2 / 3)
 		key_trans(DARROW, (t_data *)data);
-	else if (button == L_CLICK && x < W_WIDTH / 3 && y < W_HEIGHT / 3)
-	{
-		key_trans(LARROW, (t_data *)data);
-		key_trans(UARROW, (t_data *)data);
-	}
-	else if (button == L_CLICK && x > W_WIDTH * 2 / 3 && y < W_HEIGHT / 3)
-	{
-		key_trans(RARROW, (t_data *)data);
-		key_trans(UARROW, (t_data *)data);
-	}
-	else if (button == L_CLICK && x > W_WIDTH * 2 / 3 && y > W_HEIGHT * 2 / 3)
-	{
-		key_trans(RARROW, (t_data *)data);
-		key_trans(DARROW, (t_data *)data);
-	}
-	else if (button == L_CLICK && x < W_WIDTH / 3 && y > W_HEIGHT * 2 / 3)
-	{
-		key_trans(LARROW, (t_data *)data);
-		key_trans(DARROW, (t_data *)data);
-	}
+	else
+		mouse_hook_bis(button, x, y, data);
 	return (1);
 }
 
