@@ -33,8 +33,8 @@ void				rot_norm(t_matrix *mat, int theta)
 	mat->m[8] = -sin(theta);
 	mat->m[2] = sin(theta);
 	mat->m[10] = cos(theta);
-	mat->m[3] = -1/2;
-	mat->m[7] = -1/2;
+	mat->m[3] = -1 / 2;
+	mat->m[7] = -1 / 2;
 	mat->m[11] = 1;
 	mat->m[15] = 1;
 }

@@ -18,20 +18,20 @@
 # define W_WIDTH				1600
 # define W_HEIGHT				1200
 # define C_MIN					0xFF0000
-# define C_MAX					0xFFFFFF
+# define C_MAX					0x00FF00
 
 # define ESC				53
 # define LARROW				123
 # define RARROW				124
 # define DARROW				125
 # define UARROW				126
-# define D_KEY				2
-# define A_KEY				0
-# define W_KEY				13
-# define S_KEY				1
 # define PLUS				69
 # define MINUS				78
 # define RETURN				36
+# define M_PLUS				5
+# define M_MINUS			4
+# define M_RETURN			3
+# define L_CLICK			1
 
 typedef struct		s_view
 {
@@ -40,17 +40,6 @@ typedef struct		s_view
 	float			ymax;
 	float			ymin;
 }					t_view;
-
-typedef struct		s_image
-{
-	void			*ptr;
-	int				bpp;
-	int				size_line;
-	int				endian;
-	char			*data;
-	int				width;
-	int				height;
-}					t_image;
 
 typedef struct		s_mlx
 {
@@ -72,13 +61,6 @@ typedef struct		s_data
 	float			zmin;
 	float			zmax;
 }					t_data;
-
-typedef struct		s_vec3i
-{
-	int				x;
-	int				y;
-	int				z;
-}					t_vec3i;
 
 typedef struct		s_matrix
 {
@@ -115,6 +97,7 @@ int					key_value(int keycode);
 int					key_esc();
 int					key_call(int keycode, void *params);
 int					key_hook(int keycode, void *data);
+int					mouse_hook(int button,int x,int y,void *param);
 
 int					key_zoom_in(t_data *data);
 int					key_zoom_out(t_data *data);
@@ -138,12 +121,11 @@ void				view_to_screen(t_vec4f *v4f, t_vec3i *v3i,
 void				draw(t_data *data, t_mlx *mlx);
 void				put_pix_to_img(t_vec3i *v, t_image *i);
 
-void				rot_proj(t_matrix *mat, int theta);
-void				rot_norm(t_matrix *mat, int theta);
+// void				rot_proj(t_matrix *mat, int theta);
+// void				rot_norm(t_matrix *mat, int theta);
 
 int					set_color(int z);
 int					mix_color(int c1, int c2, float lambda);
-// int					get_color(int z1, int z2, int grad, int gradmax);
 
 void				build_vect(t_data *data, t_vec3i *v3i_ptr, t_mlx *mlx);
 

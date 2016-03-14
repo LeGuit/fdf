@@ -16,26 +16,9 @@ static int			need_reset(int key)
 {
 	if (key != PLUS && key != MINUS && key != LARROW
 		&& key != UARROW && key != DARROW && key != RARROW
-		&& key != A_KEY && key != S_KEY && key != W_KEY
-		&& key != D_KEY && key != ESC && key != RETURN)
+		&& key != ESC && key != RETURN)
 		return (1);
 	return (0);
-}
-
-static void			key_rot(int key, t_data *data)
-{
-	t_matrix		mat;
-
-	ft_bzero(&mat, 16);
-	if (key == D_KEY)
-		rot_proj(&mat, 30);
-	else if (key == A_KEY)
-		rot_proj(&mat, -30);
-	else if (key == W_KEY)
-		rot_norm(&mat, 30);
-	else if (key == S_KEY)
-		rot_norm(&mat, -30);
-	matrix_calcul(data, &mat);
 }
 
 static void			key_trans(int key, t_data *data)
@@ -48,6 +31,49 @@ static void			key_trans(int key, t_data *data)
 		key_uarrow(data);
 	if (key == DARROW)
 		key_darrow(data);
+}
+
+int					mouse_hook(int button, int x, int y, void *data)
+{
+	if (button == M_PLUS)
+		key_zoom_in((t_data *)data);
+	else if (button == M_MINUS)
+		key_zoom_out((t_data *)data);
+	else if (button == M_RETURN)
+		key_return((t_data *)data);
+	else if (button == L_CLICK && x < W_WIDTH / 3
+		&& y > W_HEIGHT / 3 && y < W_HEIGHT * 2 / 3)
+		key_trans(LARROW, (t_data *)data);
+	else if (button == L_CLICK && x > W_WIDTH * 2 / 3
+		&& y > W_HEIGHT / 3 && y < W_HEIGHT * 2 / 3)
+		key_trans(RARROW, (t_data *)data);
+	else if (button == L_CLICK && y < W_HEIGHT / 3
+		&& x > W_WIDTH / 3 && x < W_WIDTH * 2 / 3)
+		key_trans(UARROW, (t_data *)data);
+	else if (button == L_CLICK && y > W_HEIGHT * 2 / 3
+		&& x > W_WIDTH / 3 && x < W_WIDTH * 2 / 3)
+		key_trans(DARROW, (t_data *)data);
+	else if (button == L_CLICK && x < W_WIDTH / 3 && y < W_HEIGHT / 3)
+	{
+		key_trans(LARROW, (t_data *)data);
+		key_trans(UARROW, (t_data *)data);
+	}
+	else if (button == L_CLICK && x > W_WIDTH * 2 / 3 && y < W_HEIGHT / 3)
+	{
+		key_trans(RARROW, (t_data *)data);
+		key_trans(UARROW, (t_data *)data);
+	}
+	else if (button == L_CLICK && x > W_WIDTH * 2 / 3 && y > W_HEIGHT * 2 / 3)
+	{
+		key_trans(RARROW, (t_data *)data);
+		key_trans(DARROW, (t_data *)data);
+	}
+	else if (button == L_CLICK && x < W_WIDTH / 3 && y > W_HEIGHT * 2 / 3)
+	{
+		key_trans(LARROW, (t_data *)data);
+		key_trans(DARROW, (t_data *)data);
+	}
+	return (1);
 }
 
 int					key_hook(int key, void *data)
@@ -64,7 +90,5 @@ int					key_hook(int key, void *data)
 		key_return((t_data *)data);
 	else if (key == LARROW || key == RARROW || key == DARROW || key == UARROW)
 		key_trans(key, (t_data *)data);
-	else if (key == D_KEY || key == A_KEY || key == W_KEY || key == S_KEY)
-		key_rot(key, (t_data *)data);
 	return (1);
 }

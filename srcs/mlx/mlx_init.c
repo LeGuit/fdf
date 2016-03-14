@@ -27,16 +27,9 @@ static void			init_views(t_data *data, t_mlx *mlx)
 
 int					fdf_loop(t_data *data)
 {
-	// t_vec3i			*v3i_ptr;
-
-	// v3i_ptr = NULL;
 	ft_bzero(data->mlx->screen.data, data->mlx->screen.width
 		* data->mlx->screen.height * 4);
-	// build_vect(data, v3i_ptr, data->mlx);
-	// new_draw(v3i_ptrm data);
 	draw(data, data->mlx);
-	// if (v3i_ptr)
-	// 	free(v3i_ptr);
 	return (0);
 }
 
@@ -51,5 +44,6 @@ void				mlx_start(t_data *data)
 	init_views(data, &mlx);
 	if (mlx_key_hook(mlx.win_ptr, key_hook, data))
 		mlx_loop_hook(mlx.mlx_ptr, fdf_loop, data);
+	mlx_mouse_hook(mlx.win_ptr, mouse_hook, data);
 	mlx_loop(mlx.mlx_ptr);
 }

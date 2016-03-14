@@ -45,12 +45,12 @@ static void				draw_lines(t_vec3i *v1, t_vec3i *v2, t_image *i,
 	}
 }
 
-void				line_calc(t_data *data, t_mlx *mlx, int index,
+void					line_calc(t_data *data, t_mlx *mlx, int index,
 						t_vec3i *screen_coord)
 {
-	t_vec3i			screen_coord2;
-	t_vec4f			view_coord2;
-	int				gradmax;
+	t_vec3i				screen_coord2;
+	t_vec4f				view_coord2;
+	int					gradmax;
 
 	view_coord2 = CAST(t_vertex *, ft_vect_at(&data->vertices, index))->pos;
 	world_to_view(&view_coord2);

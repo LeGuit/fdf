@@ -37,21 +37,3 @@ void				world_to_view(t_vec4f *v)
 	v->y = (sqrt(2.f / 3.f) * (v->z)
 				- (1.f / sqrt(6.f)) * (tmpx + v->y));
 }
-
-// void				build_vect(t_data *data, t_vec3i *v3i_ptr, t_mlx *mlx)
-// {
-// 	t_vec4f			view_coord;
-// 	t_vec3i			screen_coord;
-// 	int				i;
-
-// 	v3i_ptr = (t_vec3i)malloc(sizeof(t_vec3i) * (data->ncol * data->n));
-// 	i = 0;
-// 	while (i < (int)data->vertices.size)
-// 	{
-// 		view_coord = CAST(t_vertex *, ft_vect_at(&data->vertices, i))->pos;
-// 		world_to_view(&view_coord);
-// 		view_to_screen(&view_coord, &screen_coord, data, &mlx->v_screen);
-// 		v3i_ptr[i] = screen_coord;
-// 		i++;
-// 	}
-// }
