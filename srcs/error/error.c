@@ -20,7 +20,8 @@ void				error_open(void)
 
 void				error_args(void)
 {
-	return ;
+	ft_putendl_fd("fdf: wrong number of arguments.", 2);
+	ft_putendl_fd("usage: ./fdf [1 file]", 2);
 }
 
 void				error_file(int error)

@@ -67,9 +67,9 @@ void			get_file(char *av, t_data *data)
 		error_open();
 	while ((ret = get_next_line(fd, &line) > 0))
 	{
-		data->nrow++;
 		if (data->nrow == 0)
 			data->ncol = ft_nb_words(line, ' ');
+		data->nrow++;
 		if ((ret = check_line(line, data)))
 			error_file(ret);
 		get_nbrs(line, data);
